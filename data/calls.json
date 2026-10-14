@@ -1,0 +1,138 @@
+[
+  {
+    "id": "AxarHP4",
+    "recording_file": "AxarHP4.mp3",
+    "transcript_file": "AxarHP4.txt",
+    "hospital": "Akshar Hospital - Nikol",
+    "phone": "+917879278795",
+    "call_date": "2026-10-05",
+    "call_time": "13:26",
+    "call_datetime_display": "Oct 5, 2026 1:26 PM",
+    "duration": "2:06",
+    "duration_seconds": 126,
+    "outcome": "Success",
+    "caller_name": "Harsh",
+    "patient_name": "Harsh",
+    "city": "Ahmedabad",
+    "department": "Orthopedics",
+    "doctor": "Dr. Jay Patel",
+    "first_visit": null,
+    "appointment_booked": true,
+    "appointment_date": "2026-10-06",
+    "appointment_time": "10:00",
+    "appointment_datetime_display": "Oct 6, 2026 10:00 AM",
+    "languages": [
+      "Gujarati",
+      "Hindi"
+    ],
+    "topics": [
+      "Hospital overview",
+      "Fracture",
+      "Appointment booking",
+      "Mobile number confirmation",
+      "Hospital address"
+    ],
+    "summary": "Harsh asked about the hospital and was told about Akshar Hospital's 24x7 emergency, pharmacy, pathology lab, 53+ beds and 25+ doctors. He then mentioned a fracture, and the agent recommended the orthopedic specialists (Dr. Jay Patel or Dr. Harshil Shah). An appointment was booked with Dr. Jay Patel for the next morning (Oct 6) at 10:00 AM, the mobile number was read back, and the Nikol address was shared."
+  },
+  {
+    "id": "AxarHP3",
+    "recording_file": "AxarHP3.mp3",
+    "transcript_file": "AxarHP3.txt",
+    "hospital": "Akshar Hospital - Nikol",
+    "phone": "+917879278795",
+    "call_date": "2026-10-05",
+    "call_time": "17:41",
+    "call_datetime_display": "Oct 5, 2026 5:41 PM",
+    "duration": "3:40",
+    "duration_seconds": 220,
+    "outcome": "Success",
+    "caller_name": "Shivam",
+    "patient_name": "Shivam",
+    "city": "Ahmedabad",
+    "department": "Orthopedics",
+    "doctor": "Dr. Harshil Shah",
+    "first_visit": null,
+    "appointment_booked": true,
+    "appointment_date": "2026-10-06",
+    "appointment_time": "13:00",
+    "appointment_datetime_display": "Oct 6, 2026 1:00 PM",
+    "languages": [
+      "Gujarati"
+    ],
+    "topics": [
+      "Hospital services",
+      "Treatments offered",
+      "Hand pain after cricket",
+      "Orthopedic doctors & timings",
+      "Appointment booking",
+      "Nikol & Naroda addresses"
+    ],
+    "summary": "Shivam asked about the hospital's services and treatments, then described hand pain after playing cricket the day before. The agent recommended an orthopedic consultation, shared Dr. Jay Patel's (10 AM-12 PM) and Dr. Harshil Shah's (12-2 PM) timings, and booked Dr. Harshil Shah for Tuesday, Oct 6 at 1:00 PM. The mobile number was corrected on read-back, and both the Nikol and Naroda branch addresses were provided."
+  },
+  {
+    "id": "AxarHP1",
+    "recording_file": "AxarHP1.mp3",
+    "transcript_file": "AxarHP1.txt",
+    "hospital": "Akshar Hospital - Nikol",
+    "phone": "+917879278795",
+    "call_date": "2026-10-05",
+    "call_time": "17:51",
+    "call_datetime_display": "Oct 5, 2026 5:51 PM",
+    "duration": "2:18",
+    "duration_seconds": 138,
+    "outcome": "Success",
+    "caller_name": "Dhaval",
+    "patient_name": "Dhaval",
+    "city": "Ahmedabad",
+    "department": "Gastroenterology",
+    "doctor": "Dr. Rahul Bhalgami",
+    "first_visit": null,
+    "appointment_booked": true,
+    "appointment_date": "2026-10-06",
+    "appointment_time": "14:00",
+    "appointment_datetime_display": "Oct 6, 2026 2:00 PM",
+    "languages": [
+      "Gujarati"
+    ],
+    "topics": [
+      "Stomach pain",
+      "Doctor recommendation",
+      "Doctor timings",
+      "Appointment booking"
+    ],
+    "summary": "Dhaval called with stomach pain and wanted an urgent appointment. He first asked for Dr. Jay Patel, but the agent clarified that Dr. Patel is an orthopedic doctor and recommended gastroenterologist Dr. Rahul Bhalgami (available 2-4 PM daily). An appointment was booked for Oct 6 at 2:00 PM and the patient's name and mobile number were collected."
+  },
+  {
+    "id": "AxarHP2",
+    "recording_file": "AxarHP2.mp3",
+    "transcript_file": "AxarHP2.txt",
+    "hospital": "Akshar Hospital - Nikol",
+    "phone": "+917879278795",
+    "call_date": "2026-10-05",
+    "call_time": "19:03",
+    "call_datetime_display": "Oct 5, 2026 7:03 PM",
+    "duration": "2:01",
+    "duration_seconds": 121,
+    "outcome": "Success",
+    "caller_name": "Harsh",
+    "patient_name": "Harsh",
+    "city": "Ahmedabad",
+    "department": "Diabetology",
+    "doctor": "Dr. Siddharth Shah",
+    "first_visit": null,
+    "appointment_booked": true,
+    "appointment_date": "2026-10-08",
+    "appointment_time": "12:00",
+    "appointment_datetime_display": "Oct 8, 2026 12:00 PM",
+    "languages": [
+      "Gujarati"
+    ],
+    "topics": [
+      "Appointment booking",
+      "Diabetes",
+      "Doctor recommendation & timings",
+      "Hospital address"
+    ],
+    "summary": "Harsh called to book an appointment for diabetes without a specific doctor in mind. The agent recommended Dr. Siddharth Shah (Mon-Sat, 9:30 AM-12:30 PM) and booked an appointment for Thursday, Oct 8 at 12:00 PM, confirming the patient's name and mobile number. The Nikol hospital address was shared at the caller's request."
+  }
+]
