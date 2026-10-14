@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard — Akshar Hospital Call Analytics</title>
+<title>Dashboard — AMC Sahayak Call Analytics</title>
 <link rel="stylesheet" href="assets/app.css" />
 </head>
 <body data-page="dashboard" data-title="Dashboard" data-show-range="false">
@@ -15,7 +15,7 @@
         <div class="page-header">
           <div>
             <h1>Overview</h1>
-            <p>Akshar Hospital, Nikol (Multispeciality)</p>
+            <p>AMC Sahayak — Ahmedabad Municipal Corporation citizen complaint line</p>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
     list.innerHTML = recent.map(r => {
       const when = r.call_datetime_display || r.call_date || "—";
       const who = r.caller_name || "Not given";
-      const dept = r.department || "—";
+      const dept = [r.area, lib.categoriesOf(r).join(", ")].filter(Boolean).join(" · ") || "—";
       return `
         <a class="recent-item" href="call.html?id=${encodeURIComponent(r.id)}">
           <div class="who">

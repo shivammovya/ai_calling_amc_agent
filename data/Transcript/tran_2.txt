@@ -1,0 +1,45 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917879278795
+Agent: Customer Support Agent
+Date: Oct 14, 2026 9:30 AM
+Duration: 0:42
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tamare koi suchan ke samasya chhe?
+
+[Customer] (0:04)
+હા અમારા વિસ્તારમાં છે ને કુતરાનો ત્રાસ બહુ વધી ગયો છે.
+
+[Agent] (0:08)
+Samjhi gai, aa samasya kaya vistar ma chhe?
+
+[Customer] (0:12)
+આવે થલતેજ પાછળ મેંગો રેસ્ટોરન્ટ છે ને એની આજુબાજુ જ
+
+
+[Agent] (0:15)
+Tamaru naam shu chhe?
+
+[Customer] (0:19)
+નામ જીતેશ
+
+[Agent] (0:21)
+Biju kai suchan ke samasya chhe?
+
+[Customer] (0:25)
+આ રસા પર થોડા ખારા પણ ખારા પણ છે એ જરા જોઈ લેજો ને.
+
+[Agent] (0:27)
+Samjhi gai, biju kai suchan ke samasya chhe?
+
+[Customer] (0:30)
+हां, बस अभी ही है।
+
+[Agent] (0:32)
+end_call({"disposition":"SUCCESS","reason":"OBJECTIVE_ACHIEVED"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"OBJECTIVE_ACHIEVED","success":true}
+
+[Agent] (0:32)
+✅ Jitesh bhai, tamari banne samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar! [interrupted]

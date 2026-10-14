@@ -1,0 +1,50 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917879278795
+Agent: Customer Support Agent
+Date: Oct 14, 2026 9:38 AM
+Duration: 0:55
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tamare koi suchan ke samasya chhe?
+
+[Customer] (0:05)
+મારા વિસ્તારમાં છે ને કોઈ કચરો સાફ કરવા આવતું નથી.
+
+[Agent] (0:09)
+aa samasya kaya vistar ma chhe?
+
+[Customer] (0:13)
+આ સમસ્યા અહિયાં શ્યામલ
+
+[Agent] (0:18)
+Shyamal, samjhi gai, shu tame exact location janavi shaksho?
+
+[Customer] (0:21)
+પાસે જ છે. શ્યામલ એપાર્ટમેન્ટ્સ
+
+[Agent] (0:23)
+Samjhi gai, tamaru naam shu chhe?
+
+[Customer] (0:26)
+મારું નામ હેમંત
+
+[Agent] (0:34)
+✅ Hemant bhai, tamari samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar! Biju kai suchan ke samasya chhe?
+
+[Customer] (0:40)
+બીજું ઈ છે કે ઓલા કચરા લેવા વાળા પણ નથી આવતા ગાડી વાળા.
+
+[Agent] (0:46)
+Samjhi gai, kachra ni gaadi nathi aavti, e samasya pan nondhai gai chhe. Biju kai suchan ke samasya chhe?
+
+[Customer] (0:49)
+ના, બીજી કોઈ સૂચન કે સમસ્યા નથી.
+
+[Agent] (0:50)
+end_call({"disposition":"SUCCESS","reason":"CONVERSATION_COMPLETE"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"CONVERSATION_COMPLETE","success":true}
+
+[Agent] (0:50)
+✅ Hemant bhai, tamari banne samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar! [interrupted]

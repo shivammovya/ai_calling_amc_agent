@@ -2,17 +2,15 @@
 // Extracted from the original single-page implementation — same function
 // bodies, same computations, just reusable across index/calls/call/analytics.
 window.DashboardLib = (function () {
-  // Specialties Akshar Hospital offers but that have no calls in the data yet —
-  // shown in the chart/filter with a 0 count so the full service list is visible.
-  const ZERO_CALL_DEPARTMENTS = [
-    "Cardiology",
-    "General Surgery",
-    "Nephrology",
-    "ENT",
-    "Gynecology",
-    "Psychiatry",
-    "Physiotherapy",
-    "Dental",
+  // AMC complaint categories that have no complaints in the data yet — shown
+  // in the chart/filter with a 0 count so the full category list is visible.
+  const ZERO_CALL_CATEGORIES = [
+    "Water Supply",
+    "Streetlights",
+    "Sewerage & Gutters",
+    "Mosquito & Public Health",
+    "Encroachment",
+    "Building & Construction",
   ];
 
   const ICONS = {
@@ -29,6 +27,8 @@ window.DashboardLib = (function () {
     menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>',
     close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
     arrowLeft: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7M19 12H5"/></svg>',
+    mapPin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+    clipboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>',
     calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
   };
 
@@ -43,23 +43,28 @@ window.DashboardLib = (function () {
     return `${m}:${String(s).padStart(2, "0")}`;
   }
 
+  function complaintsOf(r) { return r.complaints || []; }
+  function categoriesOf(r) { return [...new Set(complaintsOf(r).map(c => c.category).filter(Boolean))]; }
+
   function computeKpiTiles(rows) {
     const total = rows.length;
-    const booked = rows.filter(r => r.appointment_booked).length;
+    const registered = rows.filter(r => r.complaint_registered).length;
     const missed = rows.filter(r => r.call_status === "missed").length;
-    // Missed-call callbacks aren't real booking opportunities, so they're
-    // excluded from the conversion-rate denominator.
-    const conversionEligible = total - missed;
-    const conversion = conversionEligible ? Math.round((booked / conversionEligible) * 100) : 0;
+    const complaints = rows.reduce((a, r) => a + complaintsOf(r).length, 0);
+    // Missed-call callbacks never reach the agent, so they're excluded from
+    // the registration-rate denominator.
+    const eligible = total - missed;
+    const rate = eligible ? Math.round((registered / eligible) * 100) : 0;
+    const perCall = registered ? (complaints / registered).toFixed(1) : "0";
     const avgDurationSec = total ? Math.round(rows.reduce((a, r) => a + (r.duration_seconds || 0), 0) / total) : 0;
-    const depts = new Set(rows.map(r => r.department).filter(Boolean));
+    const areas = new Set(rows.map(r => r.area).filter(Boolean));
 
     return [
       { label: "Total calls", value: total, icon: ICONS.phone },
-      { label: "Appointments booked", value: booked, sub: `${conversion}% of calls`, icon: ICONS.calendarCheck },
-      { label: "Conversion rate", value: `${conversion}%`, icon: ICONS.trendingUp },
+      { label: "Complaints registered", value: complaints, sub: `${perCall} per call`, icon: ICONS.clipboard },
+      { label: "Registration rate", value: `${rate}%`, sub: `${registered} of ${eligible} calls`, icon: ICONS.trendingUp },
       { label: "Avg. call duration", value: fmtDuration(avgDurationSec), icon: ICONS.clock },
-      { label: "Departments reached", value: depts.size, icon: ICONS.grid },
+      { label: "Areas covered", value: areas.size, icon: ICONS.mapPin },
       { label: "Follow-up", value: missed, sub: missed === 1 ? "missed call" : "missed calls", icon: ICONS.alert, href: "calls.html?status=missed" },
     ];
   }
@@ -85,45 +90,64 @@ window.DashboardLib = (function () {
     });
   }
 
-  // ---- Department chart ----
-  function renderDeptChart(containerId, rows) {
-    const counts = {};
-    rows.forEach(r => {
-      const d = r.department || "Unspecified";
-      counts[d] = (counts[d] || 0) + 1;
-    });
-    ZERO_CALL_DEPARTMENTS.forEach(d => { if (!(d in counts)) counts[d] = 0; });
-
+  // ---- Horizontal bar chart ----
+  // counts: { label: n }. zeroKeys are listed with a 0 count when absent.
+  function renderBars(containerId, counts, unit, zeroKeys) {
+    (zeroKeys || []).forEach(k => { if (!(k in counts)) counts[k] = 0; });
     const entries = Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
     const max = Math.max(1, ...entries.map(e => e[1]));
     const el = document.getElementById(containerId);
     if (!entries.length) {
-      el.innerHTML = `<div class="empty-state">No department data yet.</div>`;
+      el.innerHTML = `<div class="empty-state">No data yet.</div>`;
       return;
     }
-    el.innerHTML = entries.map(([dept, count]) => `
-      <div class="bar-row" title="${escapeHtml(dept)}: ${count} call${count === 1 ? "" : "s"}${count === 0 ? " yet" : ""}">
-        <div class="bar-label"${count === 0 ? ' style="color:var(--muted)"' : ""}>${escapeHtml(dept)}</div>
+    el.innerHTML = entries.map(([key, count]) => `
+      <div class="bar-row" title="${escapeHtml(key)}: ${count} ${unit}${count === 1 ? "" : "s"}${count === 0 ? " yet" : ""}">
+        <div class="bar-label"${count === 0 ? ' style="color:var(--muted)"' : ""}>${escapeHtml(key)}</div>
         <div class="bar-track">${count > 0 ? `<div class="bar-fill" style="width:${(count / max) * 100}%"></div>` : ""}</div>
         <div class="bar-count"${count === 0 ? ' style="color:var(--muted)"' : ""}>${count}</div>
       </div>
     `).join("");
   }
 
+  // Counts individual complaints (a call can register more than one).
+  function renderCategoryChart(containerId, rows) {
+    const counts = {};
+    rows.forEach(r => complaintsOf(r).forEach(c => {
+      const k = c.category || "Unspecified";
+      counts[k] = (counts[k] || 0) + 1;
+    }));
+    renderBars(containerId, counts, "complaint", ZERO_CALL_CATEGORIES);
+  }
+
+  function renderAreaChart(containerId, rows) {
+    const counts = {};
+    rows.forEach(r => {
+      const k = r.area || "Unspecified";
+      counts[k] = (counts[k] || 0) + complaintsOf(r).length;
+    });
+    renderBars(containerId, counts, "complaint");
+  }
+
   // ---- Outcome bar ----
-  function renderOutcome(pctId, barId, rows) {
-    const booked = rows.filter(r => r.appointment_booked).length;
-    // Missed-call callbacks aren't real booking opportunities, so they're
-    // excluded from the denominator, matching the Conversion rate KPI tile.
-    const eligible = rows.filter(r => r.call_status !== "missed").length;
-    const pct = eligible ? Math.round((booked / eligible) * 100) : 0;
-    document.getElementById(pctId).textContent = eligible ? `${pct}%` : "—";
+  // Two-segment bar: share of `rows` for which isYes(r) is true.
+  function renderSplit(pctId, barId, rows, isYes, yesLabel, noLabel) {
+    const yes = rows.filter(isYes).length;
+    const pct = rows.length ? Math.round((yes / rows.length) * 100) : 0;
+    document.getElementById(pctId).textContent = rows.length ? `${pct}%` : "—";
     const bar = document.getElementById(barId);
-    if (!eligible) { bar.innerHTML = ""; return; }
+    if (!rows.length) { bar.innerHTML = ""; return; }
     bar.innerHTML = `
-      <div class="outcome-seg booked" style="width:${pct}%" title="Booked: ${booked}"></div>
-      <div class="outcome-seg pending" style="width:${100 - pct}%" title="Not booked: ${eligible - booked}"></div>
+      <div class="outcome-seg registered" style="width:${pct}%" title="${escapeHtml(yesLabel)}: ${yes}"></div>
+      <div class="outcome-seg pending" style="width:${100 - pct}%" title="${escapeHtml(noLabel)}: ${rows.length - yes}"></div>
     `;
+  }
+
+  function renderOutcome(pctId, barId, rows) {
+    // Missed-call callbacks never reach the agent, so they're excluded from
+    // the denominator, matching the Registration rate KPI tile.
+    const eligible = rows.filter(r => r.call_status !== "missed");
+    renderSplit(pctId, barId, eligible, r => r.complaint_registered, "Registered", "Not registered");
   }
 
   // ---- Table ----
@@ -131,9 +155,9 @@ window.DashboardLib = (function () {
     if (r.call_status === "missed") {
       return `<span class="badge missed"><span class="dot"></span>Missed</span>`;
     }
-    return r.appointment_booked
-      ? `<span class="badge booked"><span class="dot"></span>Booked</span>`
-      : `<span class="badge pending"><span class="dot"></span>No appointment</span>`;
+    return r.complaint_registered
+      ? `<span class="badge registered"><span class="dot"></span>Registered</span>`
+      : `<span class="badge pending"><span class="dot"></span>Not registered</span>`;
   }
 
   // Renders the calls table into #<tbodyId> / #<emptyStateId>. Clicking a row
@@ -150,9 +174,9 @@ window.DashboardLib = (function () {
     emptyState.style.display = "none";
 
     tbody.innerHTML = rows.map((r, i) => {
-      const apptCell = r.appointment_booked && r.appointment_datetime_display
-        ? escapeHtml(r.appointment_datetime_display)
-        : `<span class="muted-cell">—</span>`;
+      const cats = categoriesOf(r);
+      const categoryCell = cats.length ? escapeHtml(cats.join(", ")) : '<span class="muted-cell">—</span>';
+      const areaCell = r.area ? escapeHtml(r.area) : '<span class="muted-cell">—</span>';
       const dateCell = r.call_datetime_display || r.call_date
         ? escapeHtml(r.call_datetime_display || r.call_date)
         : '<span class="muted-cell">Not recorded</span>';
@@ -164,9 +188,10 @@ window.DashboardLib = (function () {
         <td data-label="Call date/time">${dateCell}</td>
         <td class="phone-cell" data-label="Phone">${phoneCell}</td>
         <td data-label="Caller">${r.caller_name ? escapeHtml(r.caller_name) : '<span class="muted-cell">Not given</span>'}</td>
-        <td data-label="Department">${escapeHtml(r.department) || '<span class="muted-cell">—</span>'}</td>
-        <td data-label="Appointment">${apptCell}</td>
-        <td data-label="Outcome">${statusBadge(r)}</td>
+        <td data-label="Area">${areaCell}</td>
+        <td data-label="Category">${categoryCell}</td>
+        <td data-label="Complaints">${complaintsOf(r).length}</td>
+        <td data-label="Status">${statusBadge(r)}</td>
       </tr>
       `;
     }).join("");
@@ -183,6 +208,8 @@ window.DashboardLib = (function () {
 
   function renderDetail(r) {
     const topics = (r.topics || []).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join("");
+    const complaints = complaintsOf(r).map(c =>
+      `<li>${escapeHtml(c.issue)}${c.category ? ` <span class="muted-cell">· ${escapeHtml(c.category)}</span>` : ""}</li>`).join("");
     const languages = (r.languages || []).join(", ");
     const audioSrc = r.recording_file ? `../data/Recordings/${encodeURIComponent(r.recording_file)}` : "";
     const transcriptSrc = r.transcript_file ? `../data/Transcript/${encodeURIComponent(r.transcript_file)}` : "";
@@ -192,16 +219,18 @@ window.DashboardLib = (function () {
         <div>
           <h3>Summary</h3>
           <p>${escapeHtml(r.summary) || "—"}</p>
+          <h3>Complaints registered</h3>
+          ${complaints ? `<ul class="complaint-list">${complaints}</ul>` : '<p class="muted-cell">None</p>'}
           <h3>Topics discussed</h3>
           <div class="chips">${topics || '<span class="muted-cell">—</span>'}</div>
           <h3>Details</h3>
           <p>
-            ${r.patient_name ? `Patient: ${escapeHtml(r.patient_name)}<br/>` : ""}
-            ${r.city ? `City / clinic: ${escapeHtml(r.city)}<br/>` : ""}
-            Doctor: ${r.doctor ? escapeHtml(r.doctor) : "Not specified"}<br/>
-            First visit: ${r.first_visit === true ? "Yes" : r.first_visit === false ? "No" : "Unknown"}<br/>
+            Caller: ${r.caller_name ? escapeHtml(r.caller_name) : "Declined to share"}<br/>
+            Area: ${r.area ? escapeHtml(r.area) : "Not captured"}${r.city ? `, ${escapeHtml(r.city)}` : ""}<br/>
+            Exact location: ${r.location ? escapeHtml(r.location) : "Not captured"}<br/>
             Languages: ${languages || "—"}<br/>
             Call duration: ${escapeHtml(r.duration)}<br/>
+            ${r.end_reason ? `Call ended: ${escapeHtml(r.end_reason)}<br/>` : ""}
             Outcome: ${escapeHtml(r.outcome)}
             ${(!r.phone || !r.call_date) ? `<br/><span class="muted-cell">Note: this call's log didn't include ${[!r.phone && "a phone number", !r.call_date && "a call date"].filter(Boolean).join(" or ")}.</span>` : ""}
           </p>
@@ -258,12 +287,13 @@ window.DashboardLib = (function () {
   }
 
   // ---- Filters ----
-  function populateDeptFilter(selectId, rows) {
+  function populateCategoryFilter(selectId, rows) {
     const sel = document.getElementById(selectId);
-    const depts = [...new Set([...rows.map(r => r.department).filter(Boolean), ...ZERO_CALL_DEPARTMENTS])].sort();
-    depts.forEach(d => {
+    const seen = new Set(rows.flatMap(categoriesOf));
+    const cats = [...new Set([...seen, ...ZERO_CALL_CATEGORIES])].sort();
+    cats.forEach(c => {
       const opt = document.createElement("option");
-      opt.value = d; opt.textContent = ZERO_CALL_DEPARTMENTS.includes(d) ? `${d} (0 calls)` : d;
+      opt.value = c; opt.textContent = seen.has(c) ? c : `${c} (0 calls)`;
       sel.appendChild(opt);
     });
   }
@@ -278,18 +308,23 @@ window.DashboardLib = (function () {
 
   return {
     ICONS,
-    ZERO_CALL_DEPARTMENTS,
+    ZERO_CALL_CATEGORIES,
     escapeHtml,
     fmtDuration,
+    complaintsOf,
+    categoriesOf,
     computeKpiTiles,
     renderKPIs,
-    renderDeptChart,
+    renderBars,
+    renderCategoryChart,
+    renderAreaChart,
+    renderSplit,
     renderOutcome,
     statusBadge,
     renderTable,
     renderDetail,
     wireTranscriptToggle,
-    populateDeptFilter,
+    populateCategoryFilter,
     sortByNewest,
   };
 })();

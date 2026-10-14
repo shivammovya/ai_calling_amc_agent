@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Call Details — Akshar Hospital Call Analytics</title>
+<title>Call Details — AMC Sahayak Call Analytics</title>
 <link rel="stylesheet" href="assets/app.css" />
 </head>
 <body data-page="call" data-title="Call Details" data-show-range="false">
@@ -54,11 +54,11 @@
     return;
   }
 
-  document.title = (record.caller_name || "Call") + " — Call Details — Akshar Hospital Call Analytics";
+  document.title = (record.caller_name || "Call") + " — Call Details — AMC Sahayak Call Analytics";
   document.getElementById("call-header").style.display = "flex";
-  document.getElementById("call-title").textContent = record.caller_name || "Caller not given";
+  document.getElementById("call-title").textContent = record.caller_name || "Anonymous caller";
   document.getElementById("call-subtitle").textContent =
-    [record.call_datetime_display || record.call_date, record.department, record.phone].filter(Boolean).join(" · ");
+    [record.call_datetime_display || record.call_date, record.area, record.phone].filter(Boolean).join(" · ");
   document.getElementById("call-badge-slot").innerHTML = lib.statusBadge(record);
 
   const card = document.getElementById("call-card");

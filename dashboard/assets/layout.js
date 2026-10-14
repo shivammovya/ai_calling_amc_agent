@@ -32,9 +32,9 @@
       <header class="topbar">
         <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false">${ICONS.menu || ""}</button>
         <div class="brand">
-          <div class="brand-mark" aria-hidden="true"><img src="assets/logo.png" alt="" /></div>
+          <div class="brand-mark" aria-hidden="true"><img src="assets/logo.svg" alt="" /></div>
           <div class="brand-text">
-            <div class="brand-name">Akshar Hospital</div>
+            <div class="brand-name">AMC Sahayak</div>
             <div class="page-title">${lib.escapeHtml ? lib.escapeHtml(pageTitle) : pageTitle}</div>
           </div>
         </div>

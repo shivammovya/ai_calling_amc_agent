@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Calls — Akshar Hospital Call Analytics</title>
+<title>Calls — AMC Sahayak Call Analytics</title>
 <link rel="stylesheet" href="assets/app.css" />
 </head>
 <body data-page="calls" data-title="Calls" data-show-range="false">
@@ -23,13 +23,13 @@
           <div class="filters">
             <div class="field search">
               <span aria-hidden="true" id="search-icon-slot"></span>
-              <input id="search" type="text" placeholder="Search by name or phone number…" aria-label="Search by name or phone number" />
+              <input id="search" type="text" placeholder="Search by name, phone or area…" aria-label="Search by name, phone number or area" />
             </div>
-            <select id="dept-filter" aria-label="Filter by concern / specialty"><option value="">All concerns</option></select>
-            <select id="appt-filter" aria-label="Filter by appointment status">
+            <select id="category-filter" aria-label="Filter by complaint category"><option value="">All categories</option></select>
+            <select id="status-filter" aria-label="Filter by complaint status">
               <option value="">All calls</option>
-              <option value="booked">Appointment booked</option>
-              <option value="pending">No appointment</option>
+              <option value="registered">Complaint registered</option>
+              <option value="pending">Not registered</option>
               <option value="missed">Missed</option>
             </select>
           </div>
@@ -40,9 +40,10 @@
                   <th>Call date/time</th>
                   <th>Phone</th>
                   <th>Caller</th>
-                  <th>Department</th>
-                  <th>Appointment</th>
-                  <th>Outcome</th>
+                  <th>Area</th>
+                  <th>Category</th>
+                  <th>Complaints</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody id="calls-tbody"></tbody>
@@ -71,25 +72,25 @@
   document.getElementById("search-icon-slot").outerHTML = lib.ICONS.search;
   document.getElementById("empty-icon-slot").outerHTML = lib.ICONS.search;
 
-  lib.populateDeptFilter("dept-filter", data);
+  lib.populateCategoryFilter("category-filter", data);
 
   const searchParams = new URLSearchParams(window.location.search);
   const initialStatus = searchParams.get("status");
   const isFollowUpView = searchParams.get("view") === "followup";
 
   if (isFollowUpView) {
-    document.getElementById("appt-filter").value = "missed";
-  } else if (initialStatus === "missed" || initialStatus === "booked" || initialStatus === "pending") {
-    document.getElementById("appt-filter").value = initialStatus;
+    document.getElementById("status-filter").value = "missed";
+  } else if (initialStatus === "missed" || initialStatus === "registered" || initialStatus === "pending") {
+    document.getElementById("status-filter").value = initialStatus;
   }
 
   if (isFollowUpView) {
-    document.title = "Follow-up — Akshar Hospital Call Analytics";
+    document.title = "Follow-up — AMC Sahayak Call Analytics";
     const h1 = document.querySelector(".page-header h1");
     if (h1) h1.textContent = "Follow-up";
     const subtitle = document.querySelector(".page-header p");
     if (subtitle) subtitle.textContent = "Missed calls that need a follow-up.";
-    document.getElementById("appt-filter").style.display = "none";
+    document.getElementById("status-filter").style.display = "none";
   }
 
   function detailsUrlFor(r) {
@@ -98,26 +99,26 @@
 
   function applyFilters() {
     const q = document.getElementById("search").value.trim().toLowerCase();
-    const dept = document.getElementById("dept-filter").value;
-    const appt = document.getElementById("appt-filter").value;
+    const category = document.getElementById("category-filter").value;
+    const status = document.getElementById("status-filter").value;
 
     let rows = data.filter(r => {
       if (q) {
-        const hay = `${r.caller_name || ""} ${r.patient_name || ""} ${r.phone || ""}`.toLowerCase();
+        const hay = `${r.caller_name || ""} ${r.phone || ""} ${r.area || ""} ${r.location || ""}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
-      if (dept && r.department !== dept) return false;
-      if (appt === "booked" && !r.appointment_booked) return false;
-      if (appt === "pending" && (r.appointment_booked || r.call_status === "missed")) return false;
-      if (appt === "missed" && r.call_status !== "missed") return false;
+      if (category && !lib.categoriesOf(r).includes(category)) return false;
+      if (status === "registered" && !r.complaint_registered) return false;
+      if (status === "pending" && (r.complaint_registered || r.call_status === "missed")) return false;
+      if (status === "missed" && r.call_status !== "missed") return false;
       return true;
     });
     lib.renderTable("calls-tbody", "empty-state", lib.sortByNewest(rows), detailsUrlFor);
   }
 
   document.getElementById("search").addEventListener("input", applyFilters);
-  document.getElementById("dept-filter").addEventListener("change", applyFilters);
-  document.getElementById("appt-filter").addEventListener("change", applyFilters);
+  document.getElementById("category-filter").addEventListener("change", applyFilters);
+  document.getElementById("status-filter").addEventListener("change", applyFilters);
 
   applyFilters();
 })();

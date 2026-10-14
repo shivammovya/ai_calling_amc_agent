@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Analytics — Akshar Hospital Call Analytics</title>
+<title>Analytics — AMC Sahayak Call Analytics</title>
 <link rel="stylesheet" href="assets/app.css" />
 </head>
 <body data-page="analytics" data-title="Analytics" data-show-range="false">
@@ -15,7 +15,7 @@
         <div class="page-header">
           <div>
             <h1>Analytics</h1>
-            <p>Call volume by concern/specialty and appointment-booking outcomes across all recorded calls.</p>
+            <p>Citizen complaints by category and area, and how reliably the agent registers them, across all recorded calls.</p>
           </div>
         </div>
 
@@ -23,16 +23,32 @@
 
         <div class="chart-row">
           <div class="card">
-            <h2>Calls by concern / specialty</h2>
-            <div id="dept-chart"></div>
+            <h2>Complaints by category</h2>
+            <div id="category-chart"></div>
           </div>
           <div class="card">
-            <h2>Appointment outcome</h2>
+            <h2>Complaint registration</h2>
             <div class="outcome-pct" id="outcome-pct">—</div>
             <div class="outcome-bar" id="outcome-bar"></div>
             <div class="legend">
-              <span><span class="swatch" style="background:var(--status-good)"></span>Booked</span>
-              <span><span class="swatch" style="background:var(--muted)"></span>Not booked</span>
+              <span><span class="swatch" style="background:var(--status-good)"></span>Registered</span>
+              <span><span class="swatch" style="background:var(--muted)"></span>Not registered</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-row">
+          <div class="card">
+            <h2>Complaints by area</h2>
+            <div id="area-chart"></div>
+          </div>
+          <div class="card">
+            <h2>Caller name captured</h2>
+            <div class="outcome-pct" id="name-pct">—</div>
+            <div class="outcome-bar" id="name-bar"></div>
+            <div class="legend">
+              <span><span class="swatch" style="background:var(--status-good)"></span>Name given</span>
+              <span><span class="swatch" style="background:var(--muted)"></span>Declined / not asked</span>
             </div>
           </div>
         </div>
@@ -52,8 +68,11 @@
   const data = (typeof CALLS_DATA !== "undefined") ? CALLS_DATA : [];
 
   lib.renderKPIs("kpi-row", data);
-  lib.renderDeptChart("dept-chart", data);
+  lib.renderCategoryChart("category-chart", data);
   lib.renderOutcome("outcome-pct", "outcome-bar", data);
+  lib.renderAreaChart("area-chart", data);
+  const answered = data.filter(r => r.call_status !== "missed");
+  lib.renderSplit("name-pct", "name-bar", answered, r => !!r.caller_name, "Name given", "Declined / not asked");
 })();
 </script>
 </body>

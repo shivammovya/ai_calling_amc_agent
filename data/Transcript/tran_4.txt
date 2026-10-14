@@ -1,0 +1,38 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917879278795
+Agent: Customer Support Agent
+Date: Oct 14, 2026 8:54 AM
+Duration: 0:38
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tamare koi suchan ke samasya chhe?
+
+[Customer] (0:05)
+વિસ્તારમાં છે ને વરસાદમાં બહુ પાણી ભરાઈ જાય છે.
+
+[Agent] (0:08)
+Samjhi gai, aa samasya kaya vistar ma chhe?
+
+[Customer] (0:10)
+પ્રહલાદનગરમાં
+
+[Agent] (0:13)
+Shu tame exact location janavi shaksho?
+
+[Customer] (0:17)
+હિરણ સર્કલ, મારુતિ નંદન રેસ્ટોરન્ટની બાજુમાં
+
+[Agent] (0:18)
+Tamaru naam shu chhe?
+
+[Customer] (0:21)
+મારું નામ શિવમ
+
+[Agent] (0:27)
+✅ Shivam bhai, tamari samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar!
+
+[Agent] (0:33)
+end_call({"disposition":"SUCCESS","reason":"CONVERSATION_COMPLETE"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"CONVERSATION_COMPLETE","success":true}

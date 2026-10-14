@@ -1,0 +1,44 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917879278795
+Agent: Customer Support Agent
+Date: Oct 14, 2026 9:05 AM
+Duration: 0:43
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tamare koi suchan ke samasya chhe?
+
+[Customer] (0:05)
+હા, અહીંયા છે ને અમારા વિસ્તારમાં એક ઝાડ પડી ગયું છે. જરા જોઈ લેજો ને.
+
+[Agent] (0:10)
+Namaste, aa samasya kaya vistar ma chhe?
+
+[Customer] (0:16)
+આ સમસ્યા ઇસ્કોન સર્વિસ રોડ ઉપર છે, ઇસ્કોન ચોકડી પાસે.
+
+[Agent] (0:18)
+Shu tame exact location janavi shaksho?
+
+[Customer] (0:23)
+હા, લોકેશન ઓલું વાઈડ એન્ગલ થિયેટર છે ને એની સામે
+
+[Agent] (0:25)
+Tamaru naam shu chhe?
+
+[Customer] (0:28)
+મારું નામ નથી જણાવવું મારે.
+
+[Agent] (0:31)
+Biju kai suchan ke samasya chhe?
+
+[Customer] (0:34)
+બીજી કોઈ સમસ્યા નથી. ચેક કરાવજો.
+
+[Agent] (0:38)
+end_call({"disposition":"SUCCESS","reason":"CONVERSATION_COMPLETE"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"CONVERSATION_COMPLETE","success":true}
+
+[Agent] (0:38)
+✅ Tamari samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar! [interrupted]
