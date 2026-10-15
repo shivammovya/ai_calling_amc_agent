@@ -1,0 +1,62 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917879278795
+Agent: Customer Support Agent
+Date: Oct 15, 2026 1:33 PM
+Duration: 1:12
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tamare koi suchan ke samasya chhe?
+
+[Customer] (0:04)
+આયા પાણીમાં બહુ વધારે ભરાઈ ગયા છે.
+
+[Agent] (0:08)
+Samjhi gai, aa samasya kaya vistar ma chhe?
+
+[Customer] (0:10)
+પ્રહલાદનગર
+
+[Agent] (0:14)
+Prahladnagar 100 Feet Road par kya najik chhe, koi landmark janavsho?
+
+[Customer] (0:18)
+हां, मारुतिनंदन रेस्टोरेंट पास
+
+[Agent] (0:19)
+Tamaru naam shu chhe?
+
+[Customer] (0:23)
+મારું નામ શિવમ
+
+[Agent] (0:26)
+Shivam bhai, biju kai suchan ke samasya chhe?
+
+[Customer] (0:30)
+સમય દીજીએ કે સમસ્યાનું સમાધાન કરો છો.
+
+[Agent] (0:38)
+Hu paani, gatar, rasta, light, kachro, jhaad, janvar jevi AMC ni samasya ane suchan nondhu chhu, tamare byte kai chhe?
+
+[Customer] (0:42)
+આ કચરાવાળો સવારમાં આવતો નથી ગાડીમાં.
+
+[Agent] (0:45)
+Samjhi gai, biju kai suchan ke samasya chhe?
+
+[Customer] (0:49)
+મેં કઈ કઈ સમસ્યા તમને કીધી?
+
+[Agent] (0:55)
+Tame ek paani bharavani ane biji kachra gaadi na aavani samasya janavi chhe, biju kai chhe?
+
+[Customer] (0:57)
+ના, બીજું કોઈ નથી.
+
+[Agent] (1:03)
+Shivam bhai, tamari samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar.
+
+[Agent] (1:07)
+end_call({"call_summary":"The user reported waterlogging near Nandan Restaurant in Prahladnagar and that the garbage collection vehicle is not coming in the morning. The issues were noted.","disposition":"SUCCESS","extracted_data":{"area":"Prahladnagar","exact_location":"near Nandan Restaurant","name":"Shivam","samasya":"waterlogging, garbage vehicle not coming"},"reason":"CONVERSATION_COMPLETE"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"CONVERSATION_COMPLETE","success":true}

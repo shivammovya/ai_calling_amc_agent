@@ -146,5 +146,46 @@ const CALLS_DATA = [
       "Caller name"
     ],
     "summary": "Shivam reported that water collects heavily during rain in Prahladnagar, at Hiran Circle next to Maruti Nandan Restaurant. The complaint was registered and the call ended normally."
+  },
+  {
+    "id": "rec_5",
+    "recording_file": "rec_5.mp3",
+    "transcript_file": "tran_5.txt",
+    "agent": "AMC Sahayak",
+    "phone": "+917879278795",
+    "call_date": "2026-10-15",
+    "call_time": "13:33",
+    "call_datetime_display": "Oct 15, 2026 1:33 PM",
+    "duration": "1:12",
+    "duration_seconds": 72,
+    "outcome": "Success",
+    "end_reason": "Conversation complete",
+    "caller_name": "Shivam",
+    "city": "Ahmedabad",
+    "area": "Prahladnagar",
+    "location": "Prahladnagar 100 Feet Road, near Maruti Nandan Restaurant",
+    "complaint_registered": true,
+    "complaints": [
+      {
+        "issue": "Heavy waterlogging in the area",
+        "category": "Drainage & Waterlogging"
+      },
+      {
+        "issue": "Garbage collection vehicle not coming in the morning",
+        "category": "Solid Waste & Sanitation"
+      }
+    ],
+    "languages": [
+      "Gujarati",
+      "Hindi"
+    ],
+    "topics": [
+      "Waterlogging",
+      "Garbage vehicle not coming",
+      "Location capture",
+      "Caller name",
+      "Complaint recap"
+    ],
+    "summary": "Shivam reported heavy waterlogging in Prahladnagar near Maruti Nandan Restaurant on 100 Feet Road, then added that the garbage collection vehicle does not come in the morning. When he asked which issues he had reported, the agent recapped both before registering them. This repeats his waterlogging complaint from Oct 14 (rec_4) at the same spot. The agent's end-of-call summary says \"Nandan Restaurant\"; the caller said Maruti Nandan."
   }
 ];
