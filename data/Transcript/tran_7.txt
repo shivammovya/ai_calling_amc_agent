@@ -1,0 +1,62 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917879278795
+Agent: Customer Support Agent (Copy)
+Date: Nov 17, 2026 1:19 PM
+Duration: 1:06
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tame kai suchan ke samasya mate call karyo chhe?
+
+[Customer] (0:03)
+મારા વિસ્તારમાં બહુ બધા ખાડા થઈ ગયા છે.
+
+[Agent] (0:06)
+Samjhi gai, aa samasya kaya vistar ma chhe?
+
+[Customer] (0:08)
+પ્રહલાદનગર
+
+[Agent] (0:12)
+Prahladnagar ma kya najik chhe, koi landmark janavsho?
+
+[Customer] (0:15)
+हां, मारुति नंदन रेस्टोरेंट पास है।
+
+[Agent] (0:18)
+Acha, aa samasya ketla samay thi chhe?
+
+[Customer] (0:22)
+સમસ્યા ભઈ નથી સાહેબ.
+
+[Agent] (0:24)
+Tamaru naam shu chhe?
+
+[Customer] (0:26)
+અરુણવરાજ
+
+[Agent] (0:31)
+Raj bhai, tamari samasya nondhai gai chhe, biju kai suchan ke samasya chhe?
+
+[Customer] (0:35)
+ઉમરગામમાં તો ઇન્ટરનેટ નથી આવતું ભાઈ.
+
+[Agent] (0:43)
+Internet ni samasya mate tamare network provider no sampark karvo jashe, biju kai suchan ke samasya chhe?
+
+[Customer] (0:45)
+તમે શું કામ કરો છો?
+
+[Agent] (0:53)
+Hu AMC Sahayak chhu, Amdavad Municipal Corporation mate tamari samasya nondhu chhu, biju kai suchan ke samasya chhe?
+
+[Customer] (0:56)
+ના ના, બીજું કંઈ નથી.
+
+[Agent] (0:59)
+end_call({"disposition":"SUCCESS","reason":"CONVERSATION_COMPLETE"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"CONVERSATION_COMPLETE","success":true}
+
+[Agent] (0:59)
+Raj bhai, tamari samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar. [interrupted]

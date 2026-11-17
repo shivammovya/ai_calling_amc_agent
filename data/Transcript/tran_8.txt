@@ -1,0 +1,62 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917600181441
+Agent: Customer Support Agent (Copy)
+Date: Nov 17, 2026 1:28 PM
+Duration: 1:08
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tame kai suchan ke samasya mate call karyo chhe?
+
+[Customer] (0:03)
+हमारे शहर में खाडा बहुत हो गया है रास्ता में ऊपर।
+
+[Agent] (0:07)
+Samjhi gai, aa samasya kaya vistar ma chhe?
+
+[Customer] (0:09)
+શિવરંજની
+
+[Agent] (0:13)
+Shivranjani cross road par kya najik chhe, koi landmark janavsho?
+
+[Customer] (0:16)
+આસોપાલવ છે ને ત્યાં
+
+[Agent] (0:19)
+Achcha, aa samasya ketla samay thi chhe?
+
+[Customer] (0:22)
+સમસ્યા 3 અઠવાડિયા થી
+
+[Agent] (0:24)
+Tamaru naam shu chhe?
+
+[Customer] (0:26)
+મારું નામ હેત
+
+[Agent] (0:32)
+Het bhai, tamari samasya nondhai gai chhe, biju kai suchan ke samasya chhe?
+
+[Customer] (0:37)
+અને મારી દુકાનનું શટર એ આમ ખુલતું નથી બરાબર. એવું કેમ થાય છે?
+
+[Agent] (0:43)
+Maaf karjo, hu fakt AMC ni samasya ane suchan nondhu chhu, tamare kai suchan ke samasya chhe?
+
+[Customer] (0:48)
+કાંઈ વાંધો નહીં, સમસ્યા કેટલા દિવસોમાં સોલ્વ થાશે મારી?
+
+[Agent] (0:54)
+Amari team hamna aavine joi jashe, possible hoy etlu jaldi કરી daishu, biju kai suchan ke samasya chhe?
+
+[Customer] (0:57)
+ના બીજું કંઈ નથી.
+
+[Agent] (1:00)
+Het bhai, tamari samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar.
+
+[Agent] (1:00)
+end_call({"disposition":"SUCCESS","reason":"CONVERSATION_COMPLETE"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"CONVERSATION_COMPLETE","success":true}

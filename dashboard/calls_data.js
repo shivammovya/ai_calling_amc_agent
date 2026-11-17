@@ -222,5 +222,78 @@ const CALLS_DATA = [
       "Resolution timeline"
     ],
     "summary": "Hitesh reported heavy waterlogging in Thaltej near Mango Restaurant, ongoing for two days. The agent registered the complaint and, when he asked how long it would take to resolve, said 2-3 working days. He had nothing further to add and the call ended with the agent's closing message."
+  },
+  {
+    "id": "rec_7",
+    "recording_file": "rec_7.mp3",
+    "transcript_file": "tran_7.txt",
+    "agent": "AMC Sahayak",
+    "phone": "+917879278795",
+    "call_date": "2026-11-17",
+    "call_time": "13:19",
+    "call_datetime_display": "Nov 17, 2026 1:19 PM",
+    "duration": "1:06",
+    "duration_seconds": 66,
+    "outcome": "Success",
+    "end_reason": "Conversation complete",
+    "caller_name": "Raj",
+    "city": "Ahmedabad",
+    "area": "Prahladnagar",
+    "location": "Near Maruti Nandan Restaurant, Prahladnagar",
+    "complaint_registered": true,
+    "complaints": [
+      {
+        "issue": "Many potholes in the area",
+        "category": "Roads & Potholes"
+      }
+    ],
+    "languages": [
+      "Gujarati",
+      "Hindi"
+    ],
+    "topics": [
+      "Potholes",
+      "Location capture",
+      "Caller name",
+      "Out-of-scope query"
+    ],
+    "summary": "Raj reported many potholes in Prahladnagar near Maruti Nandan Restaurant and the complaint was registered. He then mentioned that internet does not work in Umargam, which is outside AMC's scope, so the agent redirected him to his network provider. He also asked what the agent does, and the agent explained it logs AMC complaints. He had nothing further and the call ended. The transcript renders his name as \"Arunvaraj\"; the agent addressed him as Raj."
+  },
+  {
+    "id": "rec_8",
+    "recording_file": "rec_8.mp3",
+    "transcript_file": "tran_8.txt",
+    "agent": "AMC Sahayak",
+    "phone": "+917600181441",
+    "call_date": "2026-11-17",
+    "call_time": "13:28",
+    "call_datetime_display": "Nov 17, 2026 1:28 PM",
+    "duration": "1:08",
+    "duration_seconds": 68,
+    "outcome": "Success",
+    "end_reason": "Conversation complete",
+    "caller_name": "Het",
+    "city": "Ahmedabad",
+    "area": "Shivranjani",
+    "location": "Near Asopalav, Shivranjani Cross Road",
+    "complaint_registered": true,
+    "complaints": [
+      {
+        "issue": "Many potholes on the road for the past three weeks",
+        "category": "Roads & Potholes"
+      }
+    ],
+    "languages": [
+      "Gujarati",
+      "Hindi"
+    ],
+    "topics": [
+      "Potholes",
+      "Location capture",
+      "Caller name",
+      "Resolution timeline",
+      "Out-of-scope query"
+    ],
+    "summary": "Het reported many potholes on the road in Shivranjani near Asopalav, ongoing for about three weeks, and the complaint was registered. He then asked about his shop shutter not opening properly, which the agent declined as outside AMC complaints. When he asked how many days the pothole fix would take, the agent gave no fixed timeline, saying the team will visit and resolve it as soon as possible. He had nothing further and the call ended."
   }
 ];
