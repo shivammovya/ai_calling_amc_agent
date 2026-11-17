@@ -187,5 +187,40 @@ const CALLS_DATA = [
       "Complaint recap"
     ],
     "summary": "Shivam reported heavy waterlogging in Prahladnagar near Maruti Nandan Restaurant on 100 Feet Road, then added that the garbage collection vehicle does not come in the morning. When he asked which issues he had reported, the agent recapped both before registering them. This repeats his waterlogging complaint from Oct 14 (rec_4) at the same spot. The agent's end-of-call summary says \"Nandan Restaurant\"; the caller said Maruti Nandan."
+  },
+  {
+    "id": "rec_6",
+    "recording_file": "rec_6.mp3",
+    "transcript_file": "tran_6.txt",
+    "agent": "AMC Sahayak",
+    "phone": "+917879278795",
+    "call_date": "2026-11-17",
+    "call_time": "10:25",
+    "call_datetime_display": "Nov 17, 2026 10:25 AM",
+    "duration": "0:55",
+    "duration_seconds": 55,
+    "outcome": "Success",
+    "end_reason": "Objective achieved",
+    "caller_name": "Hitesh",
+    "city": "Ahmedabad",
+    "area": "Thaltej",
+    "location": "Near Mango Restaurant, Thaltej",
+    "complaint_registered": true,
+    "complaints": [
+      {
+        "issue": "Waterlogging for the past two days",
+        "category": "Drainage & Waterlogging"
+      }
+    ],
+    "languages": [
+      "Gujarati"
+    ],
+    "topics": [
+      "Waterlogging",
+      "Location capture",
+      "Caller name",
+      "Resolution timeline"
+    ],
+    "summary": "Hitesh reported heavy waterlogging in Thaltej near Mango Restaurant, ongoing for two days. The agent registered the complaint and, when he asked how long it would take to resolve, said 2-3 working days. He had nothing further to add and the call ended with the agent's closing message."
   }
 ];

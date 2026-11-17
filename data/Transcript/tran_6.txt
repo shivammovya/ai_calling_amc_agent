@@ -1,0 +1,56 @@
+CALL TRANSCRIPT
+══════════════════════════════════════════════════
+Phone: +917879278795
+Agent: Customer Support Agent
+Date: Nov 17, 2026 10:25 AM
+Duration: 0:55
+Outcome: Success
+══════════════════════════════════════════════════
+
+[Agent] (0:00)
+Namaste, hu AMC Sahayak chhu, tame kai suchan ke samasya mate call karyo chhe?
+
+[Customer] (0:02)
+અરે, એમાં તો પાણી બહુ ભરાઈ ગયા છે.
+
+[Agent] (0:06)
+Samjhi gai, aa samasya kaya vistar ma chhe?
+
+[Customer] (0:09)
+આ સમસ્યા ખલતેજમાં જ છે.
+
+[Agent] (0:12)
+Thaltej ma kya najik chhe, koi landmark janavsho?
+
+[Customer] (0:15)
+આ મેંગો રેસ્ટોરન્ટ પાસે
+
+[Agent] (0:18)
+Samjhi gai, aa samasya ketla samay thi chhe?
+
+[Customer] (0:21)
+બે દિવસથી છે.
+
+[Agent] (0:23)
+Tamaru naam shu chhe?
+
+[Customer] (0:25)
+મારું નામ હિતેશ
+
+[Agent] (0:30)
+Hitesh bhai, tamari samasya nondhai gai chhe, biju kai suchan ke samasya chhe?
+
+[Customer] (0:33)
+કેટલા દિવસમાં સોલ્વ થઈ જશે?
+
+[Agent] (0:38)
+2-3 working divas ma thai jashe, biju kai suchan ke samasya chhe?
+
+[Customer] (0:40)
+બીજું કંઈ નથી.
+
+[Agent] (0:42)
+end_call({"disposition":"SUCCESS","reason":"OBJECTIVE_ACHIEVED"}) -> {"disposition":"SUCCESS","message":"Call will end after final message. Do not speak again after this.","reason":"OBJECTIVE_ACHIEVED","success":true}
+
+[Agent] (0:42)
+Hitesh bhai, tamari samasya nondhai gai chhe, AMC team jaldi tapaas karshe, janavva badal aabhar. [interrupted]
